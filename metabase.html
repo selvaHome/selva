@@ -238,12 +238,12 @@
 
 
                          <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-                        <h2>Dashboarding in Metabase</h2>
+                        <h2>Database Integration</h2>
 
                         <p> 
                                 <p style="font-weight:bolder;"></p>
                                 <font size="4"> 
-                                        As far as the dataset is concerned in GluonTS, we have three following choices:
+                                        Some of the databases which are currently suported by Metabase include:
                                  </font>
                         </p>
 
@@ -254,9 +254,10 @@
                                         <p> 
                                         <p style="font-weight:bolder;"></p>
                                         <font size="4"> 
-                                        <li>Use an in-build time series dataset available in GluonTS</li>
-                                        <li>Create an artificial time series dataset with GluonTS</li>
-                                        <li>Adapt any external time series dataset for GluonTS</li>
+                                        <li>Amazon Redshift</li>
+                                        <li>Google Analytics</li>
+                                        <li>SparkSQL</li>
+                                        <li>Postgres</li>
                                         </li>
                                         </font>
                                         </p>
@@ -265,165 +266,26 @@
                         </div>
 
 
-
                         <p> 
-                            <p style="font-weight:bolder;"></p>
-                            <font size="4"> 
-                                    GluonTS comes with a handful of in-build time series datasets covering various sectors such as finance, energy, public, etc. An artificial data (the term 'data' refers to time series data from now onwards throughout this article) can be generated using the synthetic data generation tool of GluonTS. Any external data can be converted into a dataset recognized by GluonTS using its <a id="active" href="https://github.com/awslabs/gluon-ts/blob/master/src/gluonts/dataset/common.py"> <b> ListDataset </b></a> class. For an example:
-                            </font>
+                                <p style="font-weight:bolder;"></p>
+                                <font size="4"> 
+                                        A database can simply be integrated by accessing the <i>Admin:DATABASES:ADD DATABASE</i> portal of metabase. Refer <a id="db-metabase" href="https://www.metabase.com/docs/latest/administration-guide/01-managing-databases.html"> <b> here </b> </a> for more information. 
+                                 </font>
                         </p>
-
-
-<pre class="brush: python"><code><div><ol>
-# get the csv file as a dataframe 
-raw_data = pd.read_csv("https://raw.githubusercontent.com/numenta/NAB/master/data/realTweets/Twitter_volume_AMZN.csv",header=0,index_col=0) 
-                                                                
-# convert the raw data into an object recognised by GluonTS 
-# start: the starting index of the dataframe
-# target: the actual time series data that we want to model
-# freq: the frequency with which the data is collected
-train_data = common.ListDataset([{"start": raw_data.index[0], "target": raw_data.value[:"2015-04-05 00:00:00"]}], freq="5min")                                   
-</ol></div></code></pre>
-<!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-
-
-
-                        <p> 
-                            <p style="font-weight:bolder;"></p>
-                            <font size="4"> 
-                                    I am going to use the <a id="active" href="https://github.com/awslabs/gluon-ts/blob/master/src/gluonts/dataset/repository/_gp_copula_2019.py"> <b> exchange_rate </b></a> dataset available in GluonTS for the purpose of demonstration. An in-build dataset has 3 main members: train, test & metadata. As the name suggests, the 'train' member has the training data. The 'test' member has both the training & the test data (an additional last window of the time series which is of length equal to 'prediction length' or 'forecast horizon' as it is known in time series modeling). The 'metadata' member has various information about the dataset (e.g., the frequency of the data collected, prediction length, features, etc.). The data can further be transformed or new features can be generated using the 'Transformation' feature of GluonTS. However, we will not exercise it for the sake of simplicity. The 'train' dataset is shown below.
-                            </font>
-                        </p>
-
-<pre class="brush: python"><code><div><ol>
-# get the financial data "exchange_rate"
-gluon_data = get_dataset("exchange_rate", regenerate=True)
-train_data = next(iter(gluon_data.train))
-test_data = next(iter(gluon_data.test))
-meta_data = gluon_data.metadata
-                            
-# visualize various members of the 'gluon_data.*'
-print(train_data.keys())
-print(test_data.keys())
-print(meta_data)
-</ol></div></code></pre>
-<!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-                                
-                                
-
-                        <div class="single_course text-center">
-                                <div class="author_img">
-                                        <img src="img/articles/probabilistic_time_series/2.png" alt="">
-                                </div>
-                                <h3>Training dataset</h3>
-                        </div>
-
-
+                        
 
 
                         <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-                        <h2>Modeling</h2>
-
-                        <p> 
-                            <p style="font-weight:bolder;"></p>
-                            <font size="4"> 
-                                    GluonTS comes with a variety of probabilistic time series modeling approaches. The available models can be observed <a id="active" href="https://github.com/awslabs/gluon-ts/tree/master/src/gluonts/model"> <b> here </b></a>. We will choose <a id="active" href="https://arxiv.org/abs/1704.04110"> <b> DeepAR </b></a> approach as it is also used to power the <a id="active" href="https://aws.amazon.com/forecast/"> <b> Amazon Forecast </b></a> service offered by AWS (optionally refer to my <a id="active" href="https://www.linkedin.com/pulse/aws-amazon-forecast-time-series-forecasting-selvakumar-ulaganathan/?trackingId=Hyeb7am04ru6fu6qxu%2By2g%3D%3D"> <b> article </b></a> on Amazon Forecast). However, it is mentioned that the implementation of DeepAR in GluonTS is not related to the one that is used in Amazon Forecast.
-                            </font>
-                        </p>
-
-
-
-
-                        <p> 
-                                <p style="font-weight:bolder;"></p>
-                                <font size="4"> 
-                                        GluonTS uses slightly different modeling conventions which may be confusing at first. A model before training is denoted as an 'Estimator'. The 'Estimator' object, however, represents details about the model such as coefficients, weights, etc. Estimator is configured by 'Trainer' object that defines how (e.g., usage of GPU/CPU, batch size, number of epochs, learning rate, etc.) the Estimator should be trained. The Estimator can be further trained with training data (i.e., the 'train' member of the dataset). The trained model is known as 'Predictor'. As expected, 'Predictor' is the one that will be used to get forecasts. The Predictor can further be serialised/deserialised (i.e., saved/loaded) using its member functions 'serialize & deserialize'. For an example:
-                                </font>
-                            </p>
-
-<pre class="brush: python"><code><div><ol>
-# create an Estimator with DeepAR
-# an object of Trainer() class is used to customize Estimator
-estimator = deepar.DeepAREstimator(freq=meta_data.freq, prediction_length=meta_data.prediction_length, trainer=Trainer(ctx="cpu", epochs=200, learning_rate=1e-4))
-                                
-# create a Predictor by training the Estimator with training dataset
-predictor = estimator.train(training_data=training_data)
-                                
-# save the Predictor
-predictor.serialize(Path("/folder_name/"))
-</ol></div></code></pre>
-<!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-
-
-
-
-                        <p> 
-                                <p style="font-weight:bolder;"></p>
-                                <font size="4"> 
-                                        If we have to include (time series) features during model building, these features have to be included in the 'train' & 'test' members of the dataset, and the corresponding parameters (e.g., 'use_feat_dynamic_real = True' in case of <a id="active" href="https://github.com/awslabs/gluon-ts/blob/master/src/gluonts/model/deepar/_estimator.py"> <b> DeepAREstimator </b></a>) should be set appropriately. More information on this can be obtained <a id="active" href="https://gluon-ts.mxnet.io/examples/extended_forecasting_tutorial/extended_tutorial.html"> <b> here </b></a> (the official documentation). It is important to note that many time series datasets (not just features) can be included to build a single model.
-                                </font>
-                            </p>
-
-                        <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-                            <h2>Forecasting</h2>
-
-                        <p> 
-                                <p style="font-weight:bolder;"></p>
-                                <font size="4"> 
-                                        Forecasts can be constructed as simple as shown below.
-                                </font>
-                            </p>
-
-
-
- <pre class="brush: python"><code><div><ol>
-# make predictions
-forecasts, ts_it = make_evaluation_predictions(dataset=testing_data, predictor=predictor, num_samples=200)                               
-</ol></div></code></pre>
-<!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-                                                            
-                                                            
-
-
-                        <p> 
-                                <p style="font-weight:bolder;"></p>
-                                <font size="4"> 
-                                        Forecasts are made for the complete 'forecast horizon' as it was mentioned during the configuration of the 'Estimator'. The model accuracy is reasonably good for the first attempt, however can be improved by paying more attention to the model hyper-parameters.
-                                </font>
-                            </p>
-
-
-
-                        <!-- for spacing --> <div class=""><p></p><br></div> <!-- for spacing  -->
                         <div class="single_course text-center">
                                 <div class="author_img">
-                                        <img src="img/articles/probabilistic_time_series/3.png" alt="">
+                                        <img src="img/articles/metabase/metabase1.png" alt="">
                                 </div>
-                                <h3>Forecasts</h3>
+                                <h3>DB integration in Metabase</h3>
                         </div>
-                        <!-- for spacing --> <div class=""><p></p><br></div> <!-- for spacing  -->
+                        <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
 
 
 
-
-                        <p> 
-                                <p style="font-weight:bolder;"></p>
-                                <font size="4"> 
-                                        One of the interesting features of GluonTS is to perform <a id="active" href="https://github.com/awslabs/gluon-ts/blob/master/src/gluonts/evaluation/backtest.py"> <b> backtesting </b></a> on its own in order to provide various performance metrics. There is no need to implement (of course, possible if needed) any of the <a id="active" href="https://github.com/awslabs/gluon-ts/blob/master/src/gluonts/evaluation/_base.py"> <b> error metrics </b></a> as most of them are already available in GluonTS. This eradicates the usual uncertainty over the bug-less implementation of various error metrics to make a feasible comparison across various models. We can create our own models using GluonTS too as it provides various founding blocks of the model building and evaluation. However, it is worth writing a separate article on that, thus we will stop here for the sake of simplicity.
-                                </font>
-                        </p>
-
-                             
-                    <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
-                        <h2>Highlights</h2>
-
-
-                            <p> 
-                                    <p style="font-weight:bolder;"></p>
-                                    <font size="4"> 
-                                            It is definitely an interesting and a very useful deep-learning (time series) library for experimentation. One can create a significant amount of variations of the existing state-of-the-art probabilistic (neural) time series models. As it is geared towards research experimentation, it has simplified various aspects of model building and testing as stated earlier. For an example, it has a very simple way of comparing GluonTS's models and their variations with <a id="active" href="https://gluon-ts.mxnet.io/api/gluonts/gluonts.model.prophet.html"> <b> Facebook's Prophet </b></a> time series package. However, there is not much information over how the model built using GluonTS can be taken to production. I guess we can make use of <a id="active" href="https://github.com/awslabs/multi-model-server"> <b> MxNet Multi Model Server </b></a>  or <a id="active" href="https://aws.amazon.com/sagemaker/"> <b> Amazon SageMaker </b></a>. I will probably write more about this in the coming months.
-                                    </font>
-                            </p>
 
 
                           <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
