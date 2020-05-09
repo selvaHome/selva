@@ -108,12 +108,12 @@
             
                                     <div class="col-sm"></div>
                                     <div class="col-sm text-center">
-                                        <img src="img/articles/probabilistic_time_series/1-head.png" class="img-fluid rounded-circle" alt="My Head" heigh="550px"
-                                            width="550px">
+                                        <img src="img/articles/metabase/metabase2.png" class="img-fluid rounded-circle" alt="My Head" height="550px" width="650px">
                                     </div>
                                     <div class="col-sm"></div>
             
-                                </div>
+                            </div>
+                            
 
                         </div>
                     </div>
@@ -147,9 +147,9 @@
 
                         <p>
                             <p style="font-weight:bolder;"></p>
-                            <font size="4"> Effective presentation and interactive visualisation of outputs from various machine learning models are vital aspects of bringing Artificial Intelligence and Machine Learning close to the actual businesses. 
-                                In this respect, Business Intelligence (BI) tools play a significant role in bringing various AI & ML solutions to the hands of business experts.
-                                The typical work-flow of BI tools, at least in the context of AI & ML, includes the followings. 
+                            <font size="4"> Effective presentation and interactive visualisation of outputs from various machine learning models are vital aspects of bringing Artificial Intelligence and Machine Learning close to actual businesses. 
+                                In this respect, Business Intelligence (BI) tools play a significant role in bringing various AI & ML insights to the hands of business experts.
+                                The typical work-flow of BI tools, at least in the context of AI & ML, includes the followings: 
                             </font>
                         </p>
 
@@ -161,10 +161,10 @@
                                         <p style="font-weight:bolder;"></p>
                                         <font size="4"> 
 
-                                        <li>Bringing data from various sources (including the results of AI models)</li>
+                                        <li>Bringing data from various sources (e.g., from AI models, databases (DBs), etc.)</li>
                                         <li>Creating plots which answer various business questions</li>
-                                        <li>Creating dashboards which provide various business insights in terms of a collection of large number of plots</li>
-                                        <li>Deploying the application either on-premise or in cloud</li>
+                                        <li>Creating dashboards which provide various business insights in terms of collection of a large number of plots</li>
+                                        <li>Deploying the application either on-premise or in cloud.</li>
                                         </li>
                                         </font>
                                         </p>
@@ -177,7 +177,8 @@
 
                         <p>
                                 <p style="font-weight:bolder;"></p>
-                                <font size="4">To this end, BI tools often come up with features such as capabilities to create various plots and dashboards, easy integration with various database systems, etc. Although it is subject to the problem (or the business requirements rather) at hand, I often weigh the BI tools based on the following features.
+                                <font size="4">To this end, BI tools often come up with features such as capabilities to create various plots and dashboards, easy integration with various database systems, etc. 
+                                    Although it is subject to the problem (or rather the business requirements) at hand, I often weigh the BI tools based on the following features:
                                 </font>
                             </p>
 
@@ -190,10 +191,10 @@
                                         <font size="4"> 
 
                                         <li>Ability to easily connect to various databases</li>
-                                        <li>Ability to create plots which are suitable to present both table data & time-series data</li>
-                                        <li>Ability to apply various filtering during the creation of dashboards</li>
+                                        <li>Ability to create various kinds of plots which are suitable to present data of different forms</li>
+                                        <li>Ability to apply various filtering features during the creation of dashboards</li>
                                         <li>Easy deployment in cloud services such as AWS, Azure, Heroku or Google cloud </li>
-                                        <li>Open-source or a commercial tool</li>
+                                        <li>Open-source or a commercial tool.</li>
                                         </li>
                                         </font>
                                         </p>
@@ -208,9 +209,9 @@
                        <p> 
                             <p style="font-weight:bolder;"></p>
                             <font size="4"> 
-                                I recently came across an interesting open-sourced BI tool called <a id="metabase" href="https://www.metabase.com"> <b> Metabase </b></a>. 
-                                As a reluctant user of Qlik (although Qlik comes up with many <a id="etl" href="https://en.wikipedia.org/wiki/Extract,_transform,_load"> <b> ETL </b></a> features), I was quickly impressed by the simplicity of Metabase. 
-                                In this article, I will demonstrate how we can very easily build an AI dashboard using Metabase, and deploy it in AWS. 
+                                I recently came across an interesting open-sourced BI tool called <a id="metabase" href="https://www.metabase.com"> <b> Metabase</b>.</a>
+                                As a basic-level user of Qlik, I was quickly impressed by the simplicity of Metabase. 
+                                In this article, I will discuss about how we can very easily build an AI dashboard using Metabase, and deploy it in AWS. 
                             </font>
                        </p>
   
@@ -220,8 +221,12 @@
                        <p> 
                             <p style="font-weight:bolder;"></p>
                             <font size="4"> 
-                                    I used AWS Free-Tier account in order to deploy Metabase in AWS for free. Metabase works very well with a basic EC2 T3 instance (either type micro or small). EC2 in Free Tier comes up with 750 free hours per month which is good enough for my case. 
-                                    In order to deploy the application, you can refer to one of these links : <a id="metabase-easy-deploy" href="https://www.metabase.com/start/"> <b> Metabase easy deployment </b></a>,  <a id="metabase-deploy-doc" href="https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-elastic-beanstalk.html"> <b> Metabase custom deployment </b></a> or <a id="utube" href="https://www.youtube.com/watch?v=wmJ02K8LIFk"> <b> Youtube video </b></a>.
+                                    I used AWS Free-Tier account in order to deploy Metabase in AWS for free. Metabase works very well with a basic EC2 T3 instance (either type micro or small). 
+                                    EC2 in Free Tier comes up with 750 free hours per month which was good enough for my case. 
+                                    In order to deploy the application in AWS, you can refer to one of these links: 
+                                    <a id="metabase-easy-deploy" href="https://www.metabase.com/start/"> <b> Metabase easy deployment </b></a>, <a id="metabase-deploy-doc" href="https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-elastic-beanstalk.html"> <b> Metabase custom deployment </b></a> or <a id="utube" href="https://www.youtube.com/watch?v=wmJ02K8LIFk"> <b> Youtube video </b></a>.
+                                    The following figure provides a snapshot of various application-level interactions such as logging-in, listing-DBs, setting up datamodel & authentication, etc.
+                                    More information on the first-level application setup can be obtained from the <a id="metabase-easy-setup" href="https://www.metabase.com/docs/latest/setting-up-metabase.html"><b>official documentation</b>.</a> 
                             </font>
                         </p>
 
@@ -230,7 +235,7 @@
                                 <div class="author_img">
                                         <img src="img/articles/metabase/metabase0.png" alt="">
                                 </div>
-                                <h3>Application home page and setup features</h3>
+                                <h3>Application home page and setup options</h3>
                         </div>
                         <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
 
@@ -243,7 +248,7 @@
                         <p> 
                                 <p style="font-weight:bolder;"></p>
                                 <font size="4"> 
-                                        Some of the databases which are currently suported by Metabase include:
+                                        As any other BI tool, Metabases receives data from databases. Some of the databases which are currently suported by Metabase include:
                                  </font>
                         </p>
 
@@ -257,7 +262,7 @@
                                         <li>Amazon Redshift</li>
                                         <li>Google Analytics</li>
                                         <li>SparkSQL</li>
-                                        <li>Postgres</li>
+                                        <li>Postgres and many others (refer <a id="db-metabase" href="https://www.metabase.com/docs/latest/administration-guide/01-managing-databases.html"> <b> here </b> </a> for more information).</li>
                                         </li>
                                         </font>
                                         </p>
@@ -269,7 +274,10 @@
                         <p> 
                                 <p style="font-weight:bolder;"></p>
                                 <font size="4"> 
-                                        A database can simply be integrated by accessing the <i>Admin:DATABASES:ADD DATABASE</i> portal of metabase. Refer <a id="db-metabase" href="https://www.metabase.com/docs/latest/administration-guide/01-managing-databases.html"> <b> here </b> </a> for more information. 
+                                        A database can simply be integrated by accessing the <i>Admin:DATABASES</i> portal of metabase as shown in the following figure.
+                                        Metabase <i>does not</i> save a copy of the original data located at the remote databases. Thus it is important to activate the database synching options.
+                                        Metabase syncs every hour by default although it can be customised to business needs. If the DB is significantly large in size, then the syncing can be performed manually whenever neecessary.
+                                        SSH tunneling features are available to keep the database connections secure.
                                  </font>
                         </p>
                         
@@ -293,7 +301,9 @@
                         <p> 
                                 <p style="font-weight:bolder;"></p>
                                 <font size="4"> 
-                                        Plots are referred to as <i>Questions</i> in Metabase. Access to plots can be obtained once a raw data (e.g., table from a prostgres db) is selected from one of the integrated DBs.
+                                        Plots are referred to as <i>Questions</i> in Metabase. Plots can be created either by <i>selections</i> or <i>SQL</i> queries. 
+                                        In the case of creating questions via selection, access to the plotting portal can be obtained once the data (e.g., a table from a Postgres DB) is selected from one of the integrated DBs.
+                                        On the contrary, an inbuild SQL editor is available to create advanced questions using native SQL queries. 
                                         Some of the plot types which are currently suported by Metabase include (refer <a id="db-plottypes" href="https://www.metabase.com/docs/latest/users-guide/05-visualizing-results.html"> <b> here </b> </a> for more information):
                                  </font>
                         </p>
@@ -317,6 +327,19 @@
                         </div>
 
 
+                        <p> 
+                                <p style="font-weight:bolder;"></p>
+                                <font size="4"> 
+                                        Once individual plots or questions are created, they can be simply grouped to create dashboards as shown in the following figure. 
+                                        Various filtering options can be employed to navigate through the dashboard effectively. Data from the plots can be easily downloaded in various forms (e.g., csv, json, etc.).
+                                        Public sharing can be activated in order to share (or to embed publicly in web pages & blogs) the plots and dashboards to anyone with the link. 
+                                        This way business insights can be shared across many people (or platforms) without them having to install Metabase. 
+
+                                 </font>
+                        </p>
+
+
+
                          <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
                          <div class="single_course text-center">
                                 <div class="author_img">
@@ -330,14 +353,42 @@
 
                         <!-- for spacing --> <div class=""><p></p><br><p></p></div> <!-- for spacing  -->
                         <h2>Highlights</h2>
+                         
 
 
                             <p> 
                                     <p style="font-weight:bolder;"></p>
                                     <font size="4"> 
-                                            Pass
+                                            Metabase is definitely a promising BI tool for simple AI & ML business applications.
+                                            Although it is subject to individual business needs, the following aspects may help individuals or organisations to weigh Metabase against other open-source (or possibly commercial too!) BI tools: 
                                     </font>
                             </p>
+
+                            <div class="col-md-10 mt-sm-30">
+                                    <div class="">
+                                        <ul class="unordered-list">
+                                            <p> 
+                                            <p style="font-weight:bolder;"></p>
+                                            <font size="4"> 
+                                            <li>Fairly simple to use</li>
+                                            <li>Lacks <a id="etl" href="https://en.wikipedia.org/wiki/Extract,_transform,_load"> <b> ETL</b></a> features</li>
+                                            <li>Open-sourced with very detailed documentation</li>
+                                            <li>Light application, thus easy to run in simple cloud computes</li>
+                                            <li>Easy cloud deployment: one-click deployment support from developers</li>
+                                            <li>Support to various databases & easy integration too</li>
+                                            <li>Ability to download data in various forms from plots</li>
+                                            <li>Ability to share plots & dashboards in Slack channels</li>
+                                            <li>Ability to share or embed plots & dashboards outside of the application</li>
+                                            <li>Nice full-screen visualisation of dashboards suitable for presentation</li>
+                                            <li>Automatic exploration and plots-creation from data using a feature called <a id="pulses" href="https://www.metabase.com/docs/latest/users-guide/10-pulses.html"> <b>Pulses</b></a></li>
+                                            <li>Plots & dashboards of one DB will not automatically be replicated for another DB even if datamodel is exactly the same.</li>
+                                            </li>
+                                            </font>
+                                            </p>
+                                        </ul>
+                                    </div>
+                            </div>
+
                             
 
 
