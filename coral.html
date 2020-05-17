@@ -136,7 +136,7 @@
                        </h2>
                        <ul class="blog-info-link mt-3 mb-4">
                          <li><a href="index.html#popular-courses"><i class="fa fa-user"></i> Supervised Learning</a></li>
-                         <li><a href="index.html#about-me"><i class="fa fa-user"></i> By: Selvakumar Ulaganthan, PhD</a></li>
+                         <li><a href="index.html#about-me"><i class="fa fa-user"></i> By: Selvakumar Ulaganathan, PhD</a></li>
                        </ul>
                         <!--<h6>Disclaimer: The views expressed in this article are those of the Author's. They do not necessarily reflect the views of his employer. </h6> -->
 
@@ -150,7 +150,7 @@
                         <p>
                             <p style="font-weight:bolder;"></p>
                             <font size="4"> 
-                                Artificial Intelligence (AI) and Machine Learning (ML) technologies are becoming increasingly the distruptive trends the world is facing.
+                                Artificial Intelligence (AI) and Machine Learning (ML) technologies are becoming increasingly the disruptive trends the world is facing.
                                 Although running or inferencing using the AI & ML models is increasingly becoming affordable, the training or building of such models is still a bottleneck
                                 in terms of computation cost and resources required. 
                                 Various technologies are being used to address this bottleneck such as data parallelism, model parallelism, GPU-accelerated computing, distributed computing, etc.  
@@ -162,7 +162,7 @@
                                             <p style="font-weight:bolder;"></p>
                                             <font size="4"> 
                                             <li><strong>Latency and networks costs</strong> associated with seamless transfer of data between the points of collection and training/inference</li>
-                                            <li><strong>Privacy</strong> related concerns as the data is being shared recklesly across various devices</li>
+                                            <li><strong>Privacy</strong> related concerns as the data is being shared recklessly across various devices</li>
                                             <li><strong>Scalability</strong> related issues as the number of connected devices increases.</li>
                                             </font>
                                         </ul>
@@ -176,11 +176,11 @@
                                 <font size="4">
                                     To this end, performing machine learning at edge devices has recently become a focal point for various players in the market. 
                                     Performing ML at edge devices essentially means that the inference will be carried out at the edge device. 
-                                    Peforming a full-scale model training at edge devices is still not a norm due to various computational limitations posed by the edge devices. 
+                                    Performing a full-scale model training at edge devices is still not a norm due to various computational limitations posed by the edge devices. 
                                     There is an ongoing debate that what device should be considered as an 'edge' device, a device that collects the data such as a sensor or 
                                     a device that ensembles the data from sensors such as a gateway. 
-                                    However, it is widely accepted that a device that stays very close to where the data is being generated can be considered as an edge device.
-
+                                    However, it is widely accepted that a device that stays very close to where the data is being generated (thus potentially reducing the data sharing costs) can be considered as an edge device.
+                                    <!-- Overall, performing ML inference at the edge can bring numerous benefits to various areas such as predictive maintenance, surveillance & monitoring, autonomous vehicles, etc.  -->
                                 </font>
                         </p>
 
@@ -188,7 +188,7 @@
                             <p style="font-weight:bolder;"></p>
                             <font size="4"> 
                                 In this article, I am going to discuss about the <a id="coral" href="https://coral.ai"> <b>Google Coral Edge TPU USB Accelerator</b></a>
-                                which has been released almost a year ago by Google as part of their toolkit for performing AI at edge. 
+                                which was released almost a year ago by Google as part of its toolkit for performing AI at edge. 
                             </font>
                        </p>
   
@@ -209,7 +209,7 @@
                             <font size="4"> 
                                 As per the product datasheet, the device can perform 4 trillion operations per second (TOPS), using 0.5 watts for each TOPS (2 TOPS per watt).
                                 The device is compatible with Linux Debian 6.0 or higher, Mac OS 10.15 & Windows 10, and supports Python 3.5, 3.6, or 3.7.
-                                Althugh it has certain restrictions on the way a ML model is to be built for this device, it fullly supports the Tensorflow Lite models. 
+                                Although it has certain restrictions on the way a ML model is to be built for this device, it fully supports the Tensorflow Lite models. 
                                 More information on this can be obtained from the <a id="coral-accelerator" href="https://coral.ai/docs/accelerator/datasheet/"> <b>official site</b></a>.
                             </font>
                         </p>
@@ -256,7 +256,8 @@
                                 The model is trained with 1775 images in my personal Mac computer. 
                                 There is not much attention being paid for the model training itself as it is not the focus of this article. 
                                 However, the important thing is that I was able to run the model inference in the USB accelerator. 
-                                The following video shows the real-time operation of the USB Accelerator running the object recognition model.
+                                The following gif and video show the real-time operation of the USB Accelerator running the object recognition model.
+                                The USB Accelerator is connected to my computer getting the input data from the inbuilt video camera of the computer. 
                                 </font>
                         </p>
 
@@ -283,17 +284,17 @@
                         <p> 
                             <p style="font-weight:bolder;"></p>
                             <font size="4"> 
-                                Google has made it extremly simple to run a ML model on this USB accelerator.
-                                This device can be easily integrated with any other existing supported systems to run a ML model on edge.
+                                Google has made it extremely simple to run a ML model on its Edge TPU USB accelerator.
+                                The device can be easily integrated with any other existing supported systems to run a ML model on edge.
                                 As there is no data being shared across servers in order to perform model predictions, the device can be deployed in an offline 
                                 environment where there is no internet connectivity. 
                                 The model inference is being performed in an efficient way at the device itself. 
                                 Although I have not benchmarked the cost of predictions during the model inference, 
                                 some such results can be seen in the <a id="coral-benchmark" href="https://coral.ai/docs/edgetpu/benchmarks/"> <b>official benchmark results</b></a>. 
-                                Although it was possible to perform inference at the edge, it is still necessary to train the model ften using large-scale computing resources. 
+                                Although it was possible to perform inference at the edge, it is still necessary to train the model often using large-scale computing resources. 
                                 Otherwise, the model may potentially become irrelevant over a large span of time. 
-                                Regardless of this downside, performing ML inference at the edge can bring numerous benefits 
-                                such as predictive maintainence, surveillance & monitoring, autonomous vehicles, etc.
+                                Regardless of this downside, performing ML inference at the edge can bring numerous benefits to various areas
+                                such as predictive maintenance, surveillance & monitoring, autonomous vehicles, etc.
                             </font>
                     </p>
 
