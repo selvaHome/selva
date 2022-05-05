@@ -344,10 +344,9 @@
                                             <ul class="unordered-list">
                                                 <p style="font-weight:bolder;"></p>
                                                 <font size="4">
-                                                    <li>OpenAI Gym</li>
-                                                    <li>Dopamine (Google)</li>
-                                                    <li>ReAgent (Facebook)</li>
-                                                    <li>Huskarl.</li>
+                                                    <li><a id="openai" href="https://gym.openai.com"><b>OpenAI Gym</b></a></li>
+                                                    <li><a id="pycolab" href="https://github.com/deepmind/pycolab"><b>Deepmind Pycolab</b></a></li>
+                                                    <li><a id="deepmind-control" href="https://github.com/deepmind/dm_control"><b>Deepmind Control</b></a>.</li>
                                                 </font>
                                             </ul>
                                         </div>
@@ -356,8 +355,11 @@
                                 </p>
 
 
-                                The next big step is to use one of the famous machine learning frameworks (such as
-                                PyTorch, Tensorflow, etc.) to code the RL agent (i.e., the policy & the RL model) and
+                                
+
+
+                                The next big step is to use one of the suitable machine learning frameworks (such as
+                                <a id="pytorch" href="https://pytorch.org"><b>PyTorch</b></a>, <a id="tf" href="https://www.tensorflow.org"><b>Tensorflow</b></a>, etc.) to code the RL agent (i.e., the policy & the RL model) and
                                 get them integrated with the environment. Once such an integration is done, the agent
                                 can be trained by continual interaction with the environment. Once the training is
                                 carried out, both the policy and the model are to be integrated with an API app to serve
@@ -384,7 +386,41 @@
                             <p style="font-weight:bolder;"></p>
                             <font size="4">
                                 The difficulties of training RL models are, however, diminishing with the advent of many
-                                tools such as Ray RLLib. Ray RLLib is an open source tool
+                                tools such as 
+
+                                <!-- <a id="X" href="https://"><b>X</b></a> -->
+
+
+                                <p>
+                                    <p style="font-weight:bolder;"></p>
+                                    <font size="4">
+                                        <div class="col-md-10 mt-sm-30">
+                                            <div class="">
+                                                <ul class="unordered-list">
+                                                    <p style="font-weight:bolder;"></p>
+                                                    <font size="4">
+                                                        <li><a id="tf-agents" href="https://www.tensorflow.org/agents"><b>TensorFlow Agents</b></a></li>
+                                                        <li><a id="keras-rl" href="https://github.com/keras-rl/keras-rl"><b>Keras-RL</b></a></li>
+                                                        <li><a id="ray" href="https://docs.ray.io/en/latest/index.html"><b>Ray RLLib</b></a></li>
+                                                        <li><a id="coach" href="https://github.com/IntelLabs/coach"><b>Coach</b></a></li>
+                                                        <li><a id="horizon" href="https://github.com/zenetio/Horizon"><b>Horizon</b></a></li>
+                                                        <li><a id="reagent" href="https://github.com/facebookresearch/ReAgent"><b>ReAgent</b></a></li>
+                                                        <li><a id="dopamine" href="https://github.com/google/dopamine"><b>Dopamine</b></a></li>
+                                                        <li><a id="huskarl" href="https://github.com/danaugrs/huskarl/"><b>Huskarl</b></a>.</li>
+                                                    </font>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </font>
+                                    </p>
+                                    
+
+
+                                <!-- for spacing --><div class=""><p></p></div> <!-- for spacing  -->
+                                
+                                
+                                A nice overview of various RL frameworks can be seen <a id="overview-rl" href="https://winder.ai/a-comparison-of-reinforcement-learning-frameworks-dopamine-rllib-keras-rl-coach-trfl-tensorforce-coach-and-more/"><b>here</b></a>. 
+                                I particularly prefer Ray RLLib for various reasons. It is an open source tool
                                 developed by UC Berkeley RISELab (anyscale), and is a part of a package called Ray that
                                 comes with many capabilities to build
                                 ML models other than RL too. It's a wonderful tool to quickly experiment with RL models
@@ -394,17 +430,14 @@
                                 with both Tensorflow and PyTorch as backend to build raw machine learning models
                                 (e.g., neural networks).
 
-                                <!-- for spacing -->
-                                <div class="">
-                                    <p></p>
-                                </div> <!-- for spacing  -->
+                                <!-- for spacing --><div class=""><p></p></div> <!-- for spacing  -->
 
                                 As long as the problem is coded as environment with one of the
                                 supported frameworks (e.g., OpenAI gym), experimenting with a RL solution and bringing
                                 it to the serving become much easier than building everything from scratch. However, it
                                 is true that it can be still taunting to go through these processes to get the RL agent
-                                running in production. There is an interesting solution for that too: the AWS SageMaker
-                                RL.
+                                running in production. There is an interesting solution for that too: the 
+                                <a id="aws-rl" href="https://docs.aws.amazon.com/sagemaker/latest/dg/reinforcement-learning.html"><b>AWS SageMaker RL</b></a>.
 
 
 
